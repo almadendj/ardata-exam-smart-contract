@@ -1,1 +1,18 @@
-/node_modules
+# Dependencies
+node_modules/
+
+# Hardhat artifacts
+artifacts/
+cache/
+coverage/
+
+# Environment files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env.*.local
+
+# Local Hardhat files
+hardhat.config.local.*
