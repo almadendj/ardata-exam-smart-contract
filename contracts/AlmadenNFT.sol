@@ -13,6 +13,7 @@ contract AlmadenNFT is ERC721URIStorage, Ownable {
   }
 
   mapping(uint256 => TokenAttributes) public tokenAttributes;
+  mapping(address => uint256[]) private ownedTokens;
 
   constructor() ERC721("AlmadenNFT", "ALMAT") Ownable(msg.sender)  {}
 
@@ -23,6 +24,7 @@ contract AlmadenNFT is ERC721URIStorage, Ownable {
     _safeMint(msg.sender, newTokenId);
 
     tokenAttributes[newTokenId] = TokenAttributes(tokenName);
+    ownedTokens[msg.sender].push(newTokenId);
     tokenCounter++;
   }
 
@@ -37,5 +39,9 @@ contract AlmadenNFT is ERC721URIStorage, Ownable {
   function getTokenName(uint256 tokenId) public view returns (string memory) {
     require(ownerOf(tokenId) != address(0), "Token does not exist");
     return tokenAttributes[tokenId].tokenName;
+  }
+
+  function tokensOfOwner(address owner) public view returns (uint256[] memory) {
+    return ownedTokens[owner];
   }
 }
