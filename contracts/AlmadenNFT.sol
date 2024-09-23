@@ -36,6 +36,10 @@ contract AlmadenNFT is ERC721URIStorage, Ownable {
     mintPrice = newPrice;
   }
 
+  function getMintPrice() public view returns (uint256) {
+    return mintPrice;
+  }
+
   function getTokenName(uint256 tokenId) public view returns (string memory) {
     require(ownerOf(tokenId) != address(0), "Token does not exist");
     return tokenAttributes[tokenId].tokenName;

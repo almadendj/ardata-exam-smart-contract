@@ -1,12 +1,12 @@
 const hre = require("hardhat");
 
 async function main() {
-  const ARDataMinter = await hre.ethers.getContractFactory("ARDataMinter");
-  const arDataMinter = await ARDataMinter.deploy();
+  const AlmadenNFT = await hre.ethers.getContractFactory("AlmadenNFT");
+  const almadenNFT = await AlmadenNFT.deploy();
 
-  await arDataMinter.deployed();
+  await almadenNFT.deployed();
 
-  console.log("ARDataMinter deployed to: ", arDataMinter.address);
+  console.log("AlmadenNFT deployed to: ", almadenNFT.address);
 }
 
 main()
